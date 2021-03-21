@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { DevicesService } from "../devices.service";
 import { LoadingService } from "src/app/loading/loading.service";
 import { ToastService } from "src/app/toast/toast.service";
-import { NgbTypeahead } from "@ng-bootstrap/ng-bootstrap";
+import { NgbTypeahead, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Observable, Subject, merge } from "rxjs";
 import {
   debounceTime,
@@ -15,6 +15,7 @@ import {
 import { CategoriesService } from "../../categories/categories.service";
 import { Category } from "../../categories/Category";
 import { Device } from "../Device";
+import { DeviceRequestComponent } from "../device-request/device-request.component";
 
 @Component({
   selector: "app-devices-list",
@@ -41,7 +42,8 @@ export class DevicesListComponent implements OnInit {
     private devicesService: DevicesService,
     private categoriesService: CategoriesService,
     private loadingService: LoadingService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit() {
@@ -135,5 +137,16 @@ export class DevicesListComponent implements OnInit {
         }
       );
     }
+  }
+
+  openDeviceModal() {
+    const modalRef = this.modalService.open(DeviceRequestComponent, {
+      centered: true,
+      size: "lg",
+      scrollable: true,
+    });
+    modalRef.componentInstance.updateList.subscribe(() => {
+      this.getDevicesList();
+    });
   }
 }

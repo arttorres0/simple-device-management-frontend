@@ -1,7 +1,12 @@
 <h1 class="page-title">Devices</h1>
 
 <div class="page-content">
-  <button class="btn btn-secondary page-button new-button">New Device</button>
+  <button
+    class="btn btn-secondary page-button new-button"
+    (click)="openDeviceModal()"
+  >
+    New Device
+  </button>
 
   <div class="table-responsive">
     <table class="table table-bordered page-table">

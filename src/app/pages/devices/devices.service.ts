@@ -35,6 +35,16 @@ export class DevicesService {
     return this.http.get(this.devicesUrl, { params });
   }
 
+  saveDevice(device: Device): Observable<any> {
+    let body = {
+      color: device.color,
+      partNumber: device.partNumber,
+      categoryId: device.category.id,
+    };
+
+    return this.http.post(this.devicesUrl, body);
+  }
+
   deleteDevice(device: Device): Observable<any> {
     return this.http.delete(this.devicesUrl + "/" + device.id);
   }
