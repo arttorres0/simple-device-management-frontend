@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { LoadingService } from "src/app/loading/loading.service";
 import { ToastService } from "src/app/toast/toast.service";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 import { CategoriesService } from "../categories.service";
@@ -64,5 +63,26 @@ export class CategoriesListComponent implements OnInit {
   clearCategory(): void {
     this.selectedFilterName = "";
     this.getCategoriesList();
+  }
+
+  deleteCategory(category): void {
+    if (
+      confirm(
+        "Deleting will also cause all devices of this category to be deleted. Do you want to continue?"
+      )
+    ) {
+      this.loadingService.setLoadingBoolean(true);
+
+      this.categoriesService.deleteCategory(category).subscribe(
+        (response) => {
+          this.toastService.success(response.message);
+          this.getCategoriesList();
+        },
+        (error) => {
+          this.loadingService.setLoadingBoolean(false);
+          this.toastService.error(error.error.message);
+        }
+      );
+    }
   }
 }

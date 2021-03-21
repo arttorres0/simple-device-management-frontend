@@ -38,7 +38,10 @@
         <tr *ngFor="let category of categories">
           <td>{{ category.name }}</td>
           <td>
-            <button class="btn btn-secondary page-button delete-button">
+            <button
+              class="btn btn-secondary page-button delete-button"
+              (click)="deleteCategory(category)"
+            >
               X
             </button>
           </td>

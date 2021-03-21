@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from "src/environments/environment";
+import { Category } from "./Category";
 
 @Injectable({
   providedIn: "root",
@@ -26,5 +27,9 @@ export class CategoriesService {
     let params = new HttpParams({ fromObject: dataRequest });
 
     return this.http.get(this.categoriesUrl, { params });
+  }
+
+  deleteCategory(category: Category): Observable<any> {
+    return this.http.delete(this.categoriesUrl + "/" + category.id);
   }
 }
