@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <nav id="sidebar" class="active">
+    <div class="sidebar-header">
+      <h3>Device Management App</h3>
+    </div>
+
+    <ul class="pages-list">
+      <li
+        *ngFor="let route of menuRoutes"
+        [routerLink]="getRouterLink(route)"
+        [routerLinkActive]="['active']"
+        (click)="hideSidebar()"
+      >
+        <a>{{ route.menuName }}</a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <p>Device Management App</p>
+    </div>
+  </nav>
+
+  <div id="page-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid"></div>
+    </nav>
+  </div>
+
+  <div id="page-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
