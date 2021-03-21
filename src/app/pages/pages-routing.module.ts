@@ -12,7 +12,11 @@ const routes: Routes = [
   {
     path: "",
     component: PagesComponent,
-    children: [...adjustedPagesRoutes],
+    children: [
+      ...adjustedPagesRoutes,
+      { path: "", redirectTo: "/categories" },
+      { path: "**", redirectTo: "/categories" },
+    ],
   },
 ];
 
