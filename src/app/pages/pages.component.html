@@ -9,7 +9,6 @@
         *ngFor="let route of menuRoutes"
         [routerLink]="getRouterLink(route)"
         [routerLinkActive]="['active']"
-        (click)="hideSidebar()"
       >
         <a>{{ route.menuName }}</a>
       </li>
