@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { LoadingService } from "./loading/loading.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-root",
@@ -6,5 +8,15 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  title = "device-management";
+  loading: boolean;
+  subscription: Subscription;
+
+  constructor(private loadingService: LoadingService) {
+    this.loading = false;
+    this.subscription = this.loadingService
+      .getLoadingBoolean()
+      .subscribe((loading) => {
+        this.loading = loading;
+      });
+  }
 }

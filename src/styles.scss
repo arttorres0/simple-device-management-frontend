@@ -1,1 +1,248 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "colors";
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+//SHARED PAGE CONTENT STYLES
+
+input,
+button,
+a {
+  &:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}
+
+.btn.disabled,
+.btn:disabled {
+  opacity: 0.5;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: $page-darker-color;
+}
+
+.page-content {
+  background-color: $navbar-bg-color;
+  padding: 30px;
+  border-radius: 10px;
+  color: $page-darker-color;
+  .page-button {
+    background-color: $sidebar-bg-color;
+    &:hover {
+      background-color: $sidebar-hover-color;
+    }
+  }
+  .new-button {
+    float: right;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  .table-responsive {
+    min-height: 200px;
+  }
+}
+
+.filter-wrapper {
+  .form-group {
+    padding-left: 0px;
+  }
+  margin-bottom: 30px;
+  label {
+    font-weight: bold;
+  }
+  label,
+  input,
+  .page-button {
+    font-size: 14px;
+    min-width: 100px;
+  }
+}
+
+.page-table {
+  font-size: 14px;
+  text-align: center;
+  color: $page-darker-color;
+  td,
+  th {
+    vertical-align: middle !important;
+  }
+  th {
+    font-size: 16px;
+  }
+  .delete-col,
+  .filter-input-wrapper {
+    margin-top: 8px;
+    input,
+    button {
+      font-size: 12px;
+      padding: 0 10px;
+      height: 25px;
+    }
+  }
+  .delete-button {
+    font-size: 12px;
+    background-color: red;
+  }
+}
+
+.btn-link {
+  color: $sidebar-bg-color !important;
+}
+
+.bg-primary {
+  background-color: $sidebar-bg-color !important;
+}
+
+.pagination-wrapper {
+  margin: 0;
+  .pagination-count {
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  .pagination {
+    margin-bottom: 0;
+    .page-link {
+      color: $page-darker-color;
+      &:not(.disabled):hover {
+        background-color: $sidebar-bg-color;
+        color: $navbar-bg-color;
+      }
+    }
+    .page-item.active .page-link {
+      background-color: $sidebar-bg-color;
+      color: $navbar-bg-color;
+      border-color: #dee2e6;
+    }
+    .page-item.disabled .page-link {
+      background-color: $sidebar-light-color;
+      color: $navbar-bg-color;
+    }
+  }
+}
+
+ngb-typeahead-window.dropdown-menu.show {
+  max-height: 100px !important;
+  overflow-y: auto !important;
+  max-width: 85%;
+}
+
+ngb-modal-window {
+  .component-host-scrollable {
+    height: 100%;
+  }
+  .modal-content {
+    height: 100% !important;
+  }
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items {
+  max-height: 150px !important;
+}
+
+.modal-body {
+  label {
+    font-weight: bold;
+  }
+
+  .edit-button {
+    float: right;
+  }
+
+  form {
+    clear: both;
+  }
+
+  .text-span {
+    height: fit-content;
+    border: none;
+  }
+
+  input:disabled {
+    border: none;
+    background-color: transparent;
+  }
+
+  select:disabled {
+    border: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: "";
+  }
+
+  .form-control {
+    font-size: 14px !important;
+  }
+}
+
+.modal-footer {
+  padding: 16px;
+}
+
+.modal-dialog {
+  max-width: 70%;
+}
+
+.modal-lg,
+.modal-xl {
+  max-width: 800px;
+}
+
+.ng-select .ng-arrow-wrapper .ng-arrow {
+  border-width: 7px 3px 2.5px;
+}
+
+.ng-select.ng-select-opened > .ng-select-container .ng-arrow {
+  border-width: 0 3px 7px;
+}
+
+.ng-select.ng-select-multiple
+  .ng-select-container
+  .ng-value-container
+  .ng-placeholder {
+  padding-bottom: 0;
+  font-size: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.ng-select.ng-select-multiple
+  .ng-select-container
+  .ng-value-container
+  .ng-value,
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  font-size: 12px;
+}
+
+.ng-select .ng-select-container:hover {
+  box-shadow: none;
+}
+
+.dropdown-item {
+  font-size: 12px !important;
+}
