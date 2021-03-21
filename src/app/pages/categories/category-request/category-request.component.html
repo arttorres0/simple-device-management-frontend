@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <h4 class="modal-title">New Category</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #categoryForm="ngForm">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="nameInput">Name*</label>
+        <input
+          required
+          id="nameInput"
+          type="text"
+          class="form-control"
+          [(ngModel)]="category.name"
+          name="name"
+        />
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button
+    [disabled]="!categoryForm.form.valid"
+    type="submit"
+    class="btn btn-outline-success"
+    (click)="saveCategory()"
+  >
+    Salvar
+  </button>
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="activeModal.close('Close click')"
+  >
+    Fechar
+  </button>
+</div>

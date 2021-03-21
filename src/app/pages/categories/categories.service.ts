@@ -29,6 +29,14 @@ export class CategoriesService {
     return this.http.get(this.categoriesUrl, { params });
   }
 
+  saveCategory(category: Category): Observable<any> {
+    let body = {
+      name: category.name,
+    };
+
+    return this.http.post(this.categoriesUrl, body);
+  }
+
   deleteCategory(category: Category): Observable<any> {
     return this.http.delete(this.categoriesUrl + "/" + category.id);
   }

@@ -1,7 +1,12 @@
 <h1 class="page-title">Categories</h1>
 
 <div class="page-content">
-  <button class="btn btn-secondary page-button new-button">New Category</button>
+  <button
+    class="btn btn-secondary page-button new-button"
+    (click)="openCategoryModal()"
+  >
+    New Category
+  </button>
 
   <div class="table-responsive">
     <table class="table table-bordered page-table">
@@ -52,12 +57,9 @@
 
   <div class="row align-items-center justify-content-end pagination-wrapper">
     <div class="pagination-count">
-      {{ numberOfResults === 0 ? 0 : pageSize * page - pageSize + 1 }} -
-      {{
-        pageSize * page < numberOfResults ? pageSize * page : numberOfResults
-      }}
-      de
-      {{ numberOfResults }}
+      {{ numberOfResults === 0 ? 0 : pageSize * page - pageSize + 1 }} - {{
+      pageSize * page < numberOfResults ? pageSize * page : numberOfResults }}
+      de {{ numberOfResults }}
     </div>
     <ngb-pagination
       [(page)]="page"

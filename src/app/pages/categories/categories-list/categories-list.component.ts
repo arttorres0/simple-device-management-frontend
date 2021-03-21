@@ -1,10 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { LoadingService } from "src/app/loading/loading.service";
 import { ToastService } from "src/app/toast/toast.service";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 import { CategoriesService } from "../categories.service";
 import { Category } from "../Category";
+import { CategoryRequestComponent } from "../category-request/category-request.component";
 
 @Component({
   selector: "app-categories-list",
@@ -24,7 +26,8 @@ export class CategoriesListComponent implements OnInit {
   constructor(
     private categoriesService: CategoriesService,
     private loadingService: LoadingService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private modalService: NgbModal
   ) {
     this.subject
       .pipe(debounceTime(500))
@@ -84,5 +87,16 @@ export class CategoriesListComponent implements OnInit {
         }
       );
     }
+  }
+
+  openCategoryModal() {
+    const modalRef = this.modalService.open(CategoryRequestComponent, {
+      centered: true,
+      size: "lg",
+      scrollable: true,
+    });
+    modalRef.componentInstance.updateList.subscribe(() => {
+      this.getCategoriesList();
+    });
   }
 }
