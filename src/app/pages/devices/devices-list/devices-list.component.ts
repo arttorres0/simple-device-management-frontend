@@ -119,4 +119,21 @@ export class DevicesListComponent implements OnInit {
   clearCategory(): void {
     this.selectedFilterCategory = undefined;
   }
+
+  deleteDevice(device): void {
+    if (confirm("Are you sure you want to delete this device?")) {
+      this.loadingService.setLoadingBoolean(true);
+
+      this.devicesService.deleteDevice(device).subscribe(
+        (response) => {
+          this.toastService.success(response.message);
+          this.getDevicesList();
+        },
+        (error) => {
+          this.loadingService.setLoadingBoolean(false);
+          this.toastService.error(error.error.message);
+        }
+      );
+    }
+  }
 }

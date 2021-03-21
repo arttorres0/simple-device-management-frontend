@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from "src/environments/environment";
+import { Device } from "./Device";
 
 @Injectable({
   providedIn: "root",
@@ -32,5 +33,9 @@ export class DevicesService {
     let params = new HttpParams({ fromObject: dataRequest });
 
     return this.http.get(this.devicesUrl, { params });
+  }
+
+  deleteDevice(device: Device): Observable<any> {
+    return this.http.delete(this.devicesUrl + "/" + device.id);
   }
 }

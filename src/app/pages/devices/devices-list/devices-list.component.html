@@ -51,7 +51,10 @@
           <td>{{ device.partNumber }}</td>
           <td>{{ device.category.name }}</td>
           <td>
-            <button class="btn btn-secondary page-button delete-button">
+            <button
+              class="btn btn-secondary page-button delete-button"
+              (click)="deleteDevice(device)"
+            >
               X
             </button>
           </td>
