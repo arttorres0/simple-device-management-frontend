@@ -13,8 +13,52 @@
       <thead>
         <tr>
           <th scope="col">Id</th>
-          <th scope="col">Color</th>
-          <th scope="col">Part Number</th>
+          <th scope="col">
+            Color
+            <div class="row justify-content-center">
+              <div class="input-group filter-input-wrapper col-md-10">
+                <input
+                  id="filter-color-input"
+                  type="text"
+                  class="form-control"
+                  (ngModelChange)="subject.next()"
+                  [(ngModel)]="selectedFilterColor"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-secondary page-button"
+                    (click)="clearColor()"
+                  >
+                    Clear
+                  </button>
+                </div>
+              </div>
+            </div>
+          </th>
+          <th scope="col">
+            Part Number
+            <div class="row justify-content-center">
+              <div class="input-group filter-input-wrapper col-md-10">
+                <input
+                  id="filter-partnumber-input"
+                  type="text"
+                  class="form-control"
+                  (ngModelChange)="subject.next()"
+                  [(ngModel)]="selectedFilterPartNumber"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-secondary page-button"
+                    (click)="clearPartNumber()"
+                  >
+                    Clear
+                  </button>
+                </div>
+              </div>
+            </div>
+          </th>
           <th scope="col">
             Category
             <div class="row justify-content-center">

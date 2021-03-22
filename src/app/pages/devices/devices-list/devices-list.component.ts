@@ -38,13 +38,17 @@ export class DevicesListComponent implements OnInit {
   focusFilterCategory$ = new Subject<string>();
   clickFilterCategory$ = new Subject<string>();
 
+  subject: Subject<null> = new Subject();
+
   constructor(
     private devicesService: DevicesService,
     private categoriesService: CategoriesService,
     private loadingService: LoadingService,
     private toastService: ToastService,
     private modalService: NgbModal
-  ) {}
+  ) {
+    this.subject.pipe(debounceTime(500)).subscribe(() => this.getDevicesList());
+  }
 
   ngOnInit() {
     this.selectedFilterCategory = this.prevSelectedFilterCategory = undefined;
@@ -120,6 +124,14 @@ export class DevicesListComponent implements OnInit {
 
   clearCategory(): void {
     this.selectedFilterCategory = undefined;
+  }
+
+  clearColor(): void {
+    this.selectedFilterColor = undefined;
+  }
+
+  clearPartNumber(): void {
+    this.selectedFilterPartNumber = undefined;
   }
 
   deleteDevice(device): void {
