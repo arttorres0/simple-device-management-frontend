@@ -1,27 +1,35 @@
-# DeviceManagement
+# Device Management Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.22.
+This is an Angular project, with the purpose to consume the [Device Management Backend project](https://github.com/arttorres0/simple-device-management-backend) API.
+It is currently deployed in Heroku, check this [URL](http://device-management-frontend.herokuapp.com/) if you want to see the live version of this project.
 
-## Development server
+## Requirements
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This project was created using the following dependencies:
+```
+node -v
+v12.14.1
+npm -v
+6.13.6
+ng -v
+Angular CLI: 8.3.22
+```
 
-## Code scaffolding
+## Setup
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `npm install` to install project dependencies. Also, don't forget to change environment variables as you need (dev and prod).
 
-## Build
+## Running as dev
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+ng serve
+```
 
-## Running unit tests
+## Deployment
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+In order to deploy in Heroku, a server using Express was installed in this project. To simulate the deployment, run the commands:
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+npm run build-app (for a dev deployment) or npm run postinstall (for a prod deployment)
+npm run start
+```
