@@ -128,10 +128,12 @@ export class DevicesListComponent implements OnInit {
 
   clearColor(): void {
     this.selectedFilterColor = undefined;
+    this.getDevicesList();
   }
 
   clearPartNumber(): void {
     this.selectedFilterPartNumber = undefined;
+    this.getDevicesList();
   }
 
   deleteDevice(device): void {
