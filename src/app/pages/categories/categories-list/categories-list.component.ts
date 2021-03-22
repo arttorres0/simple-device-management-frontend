@@ -40,6 +40,13 @@ export class CategoriesListComponent implements OnInit {
     this.getCategoriesList();
   }
 
+  ngDoCheck() {
+    if (this.page !== this.prevPage) {
+      this.getCategoriesList();
+      this.prevPage = this.page;
+    }
+  }
+
   getCategoriesList(): void {
     this.loadingService.setLoadingBoolean(true);
 
