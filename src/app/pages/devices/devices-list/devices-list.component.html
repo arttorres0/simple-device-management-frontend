@@ -1,11 +1,11 @@
-<h1 class="page-title">Categories</h1>
+<h1 class="page-title">Devices</h1>
 
 <div class="page-content">
   <button
     class="btn btn-secondary page-button new-button"
-    (click)="openCategoryModal()"
+    (click)="openDeviceModal()"
   >
-    New Category
+    New Device
   </button>
 
   <div class="table-responsive">
@@ -13,6 +13,8 @@
       <thead>
         <tr>
           <th scope="col">Id</th>
+          <th scope="col">Color</th>
+          <th scope="col">Part Number</th>
           <th scope="col">
             Category
             <div class="row justify-content-center">
@@ -21,9 +23,16 @@
                   id="filter-category-input"
                   type="text"
                   class="form-control"
-                  (ngModelChange)="subject.next()"
-                  [(ngModel)]="selectedFilterName"
+                  [(ngModel)]="selectedFilterCategory"
                   [ngModelOptions]="{ standalone: true }"
+                  [ngbTypeahead]="searchCategory"
+                  [inputFormatter]="formatterCategory"
+                  [resultFormatter]="formatterCategory"
+                  [editable]="false"
+                  [placement]="['bottom-left']"
+                  (focus)="focusFilterCategory$.next($any($event).target.value)"
+                  (click)="clickFilterCategory$.next($any($event).target.value)"
+                  #instanceFilterCategory="ngbTypeahead"
                 />
                 <div class="input-group-append">
                   <button
@@ -41,13 +50,15 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let category of categories">
-          <td>{{ category.id }}</td>
-          <td>{{ category.name }}</td>
+        <tr *ngFor="let device of devices">
+          <td>{{ device.id }}</td>
+          <td>{{ device.color }}</td>
+          <td>{{ device.partNumber }}</td>
+          <td>{{ device.category.name }}</td>
           <td>
             <button
               class="btn btn-secondary page-button delete-button"
-              (click)="deleteCategory(category)"
+              (click)="deleteDevice(device)"
             >
               X
             </button>
@@ -63,7 +74,8 @@
       {{
         pageSize * page < numberOfResults ? pageSize * page : numberOfResults
       }}
-      de {{ numberOfResults }}
+      de
+      {{ numberOfResults }}
     </div>
     <ngb-pagination
       [(page)]="page"
