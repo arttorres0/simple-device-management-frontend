@@ -41,7 +41,9 @@
           type="text"
           class="form-control"
           [(ngModel)]="device.color"
+          maxlength="16"
           name="color"
+          placeholder="Type the device color (only letters, max length 16)"
         />
       </div>
     </div>
@@ -55,6 +57,7 @@
           class="form-control"
           [(ngModel)]="device.partNumber"
           name="partNumber"
+          placeholder="Type the device part number (only positive numbers)"
         />
       </div>
     </div>
