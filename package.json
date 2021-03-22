@@ -6,7 +6,7 @@
     "dev": "ng serve --open",
     "start": "node server.js",
     "postinstall": "ng build --aot --prod",
-    "build": "ng build",
+    "build-app": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
