@@ -8,6 +8,7 @@ import { CategoriesListComponent } from "./categories/categories-list/categories
 import { CategoryRequestComponent } from "./categories/category-request/category-request.component";
 import { DevicesListComponent } from "./devices/devices-list/devices-list.component";
 import { DeviceRequestComponent } from "./devices/device-request/device-request.component";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,12 @@ import { DeviceRequestComponent } from "./devices/device-request/device-request.
     DevicesListComponent,
     DeviceRequestComponent,
   ],
-  imports: [CommonModule, PagesRoutingModule, NgbModule, FormsModule],
+  imports: [
+    CommonModule,
+    PagesRoutingModule,
+    NgbModule,
+    FormsModule,
+    SharedModule,
+  ],
 })
 export class PagesModule {}
